@@ -10,9 +10,59 @@ var bio = {
         },
     "welcomeMessage": "Hi. I'm a veteran in the field of taking complex data sets and making them actionable. Then I translate those actions into new front-end design UI.",
     "skills": [
-        "E-Commerce", " Online Marketing", " SEO/SEM/PPC", " Google Analytics", " Data Visualization", " Email Nurturing"],
+        "E-Commerce", " Online Marketing", " SEO &amp PPC", " Google Analytics", " Data Visualization", " Email Nurturing"],
     "pic": "images/bio-pic.jpg"
 };
+
+// NAME, ROLE, PIC & WELCOME MESSAGE
+
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+
+var formattedPic = HTMLbioPic.replace("%data%", bio.pic);
+
+var formattedWelcome = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
+
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+$("#header").append(formattedPic);
+$("#header").append(formattedWelcome);
+
+// CONTACT INFO
+
+var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+$("#topContacts").append(formattedEmail);
+
+var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+$("#topContacts").append(formattedMobile);
+
+var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+$("#topContacts").append(formattedTwitter);
+
+var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+$("#topContacts").append(formattedGithub);
+
+var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+
+$("#topContacts").prepend(formattedLocation);
+
+// SKILLS
+
+if (bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+   $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+   $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+   $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+   $("#skills").append(formattedSkill);
+}
 
 var education = {
     "schools": [
@@ -52,9 +102,9 @@ var education = {
 var projects = {
     "projects": [
         {
-            "title": "Project 1",
+            "title": "Words &amp Pictures App",
             "dates": "October, 2014",
-            "description": "Project 1 is an anagram app.",
+            "description": "Words &amp Pictures is an anagram app.",
             "images": [
                 "images/1.jpg",
                 "images/2.jpg"
@@ -104,3 +154,76 @@ var work = {
         }
     ]
 }
+
+// WORK EXPERIENCE
+
+function displayWork () {
+for (job in work.jobs) {
+    // creates new div for each job
+    $("#workExperience").append(HTMLworkStart);
+    // combines employer and title
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+    var formattedEmployerTitle = formattedEmployer + formattedTitle;
+    $(".work-entry:last").append(formattedEmployerTitle);
+    // adds in job dates
+    var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+    $(".work-entry:last").append(formattedDates);
+    // adds in location
+    var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+    $(".work-entry:last").append(formattedLocation);
+    // adds in job description
+    var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+    $(".work-entry:last").append(formattedDescription);
+    }
+}
+
+displayWork();
+
+// RETURN PROJECTS
+
+projects.display = function() {
+    for (project in projects.projects) {
+        $("#projects").append(HTMLprojectStart);
+        var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+        $(".project-entry:last").append(formattedTitle);
+        var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+        $(".project-entry:last").append(formattedDates);
+        var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+        $(".project-entry:last").append(formattedDescription);
+        //images are in an array, so code accordingly
+        if (projects.projects[project].images.length > 0) {
+            for (image in projects.projects[project].images) {
+                var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[project].images[image]); 
+                $(".project-entry:last").append(formattedImage);
+                }
+            }
+        }
+    }
+
+projects.display();
+
+// RETURN WORK LOCATIONS
+
+function locationizer(work_object) {
+    var locationArray = [];
+    for (job in work_object.jobs) {
+        var newLocation = work_object.jobs[job].location;
+        locationArray.push(newLocation);
+    }
+    return locationArray;
+}
+
+// Did locationizer() work? This line will tell you!
+console.log(locationizer(work));
+
+// INTERNATIONAL NAME
+function inName() {
+    splitName = bio.name.trim().split(" ");
+    console.log(name);
+    splitName[1] = splitName[1].toUpperCase();
+    splitName[0] = splitName[0].slice(0,1).toUpperCase() + splitName[0].slice(1).toLowerCase();
+    return splitName[0] + " " + splitName[1];
+}
+
+$("#main").append(internationalizeButton);
