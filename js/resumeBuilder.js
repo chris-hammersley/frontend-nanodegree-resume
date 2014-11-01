@@ -68,19 +68,17 @@ var education = {
     "schools": [
         {
             "name": "The New School",
-            "city": "New York, NY",
-            "degree": "MA",
+            "location": "New York, NY",
+            "degree": "Master of Arts",
             "major": "Media Studies",
-            "dates": "2000-2003",
-            "url": "http://www.newschool.edu"
+            "dates": "2000-2003"
         },
         {
             "name": "Loyola University",
-            "city": "Chicago, IL",
-            "degree": "BA",
+            "location": "Chicago, IL",
+            "degree": "Bachelor of Arts",
             "major": "Communication",
-            "dates": "1989-1993",
-            "url": "http://www.luc.edu"
+            "dates": "1989-1993"
         }
     ],
     "onlineCourses": [
@@ -155,32 +153,32 @@ var work = {
     ]
 }
 
-// WORK EXPERIENCE
+// DISPLAY WORK EXPERIENCE DETAILS
 
-function displayWork () {
-for (job in work.jobs) {
-    // creates new div for each job
-    $("#workExperience").append(HTMLworkStart);
-    // combines employer and title
-    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-    var formattedEmployerTitle = formattedEmployer + formattedTitle;
-    $(".work-entry:last").append(formattedEmployerTitle);
-    // adds in job dates
-    var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-    $(".work-entry:last").append(formattedDates);
-    // adds in location
-    var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-    $(".work-entry:last").append(formattedLocation);
-    // adds in job description
-    var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-    $(".work-entry:last").append(formattedDescription);
+work.display = function() {
+    for (job in work.jobs) {
+        // creates new div for each job
+        $("#workExperience").append(HTMLworkStart);
+        // combines employer and title
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+        var formattedEmployerTitle = formattedEmployer + formattedTitle;
+        $(".work-entry:last").append(formattedEmployerTitle);
+        // adds in job dates
+        var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+        $(".work-entry:last").append(formattedDates);
+        // adds in location
+        var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+        $(".work-entry:last").append(formattedLocation);
+        // adds in job description
+        var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+        $(".work-entry:last").append(formattedDescription);
+        }
     }
-}
 
-displayWork();
+work.display();
 
-// RETURN PROJECTS
+// DISPLAY PROJECT DETAILS
 
 projects.display = function() {
     for (project in projects.projects) {
@@ -203,6 +201,29 @@ projects.display = function() {
 
 projects.display();
 
+// DISPLAY EDUCATION DETAILS
+
+education.display = function() {
+    for (school in education.schools) {
+        $("#education").append(HTMLschoolStart);
+        var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+        $(".education-entry:last").append(formattedName);
+        var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+        $(".education-entry:last").append(formattedDates);
+        var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+        $(".education-entry:last").append(formattedDegree);
+        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+        $(".education-entry:last").append(formattedLocation);
+        var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+        $(".education-entry:last").append(formattedMajor);
+        }
+    }
+
+education.display();
+
+// DISPLAY GOOGLE MAP OF LOCATIONS
+$("#mapDiv").append(googleMap);
+
 // RETURN WORK LOCATIONS
 
 function locationizer(work_object) {
@@ -217,7 +238,7 @@ function locationizer(work_object) {
 // Did locationizer() work? This line will tell you!
 console.log(locationizer(work));
 
-// INTERNATIONAL NAME
+// INTERNATIONAL NAME BUTTON
 function inName() {
     splitName = bio.name.trim().split(" ");
     console.log(name);
