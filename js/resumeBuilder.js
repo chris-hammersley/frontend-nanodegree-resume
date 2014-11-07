@@ -50,6 +50,15 @@ $("#topContacts").prepend(formattedLocation);
 // SKILLS
 
 if (bio.skills.length > 0) {
+  $('#header').append(HTMLskillsStart);
+
+  for (var i = 0; i < bio.skills.length; ++i) {
+    var formattedSkill = HTMLskills.replace('%data%', bio.skills[i]);
+    $("#skills").append(formattedSkill);
+  }
+}
+
+/* if (bio.skills.length > 0) {
     $("#header").append(HTMLskillsStart);
 
     var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
@@ -63,6 +72,7 @@ if (bio.skills.length > 0) {
     formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
    $("#skills").append(formattedSkill);
 }
+*/
 
 var education = {
     "schools": [
