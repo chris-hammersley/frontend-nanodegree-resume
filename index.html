@@ -6,7 +6,7 @@
   <script src="js/jQuery.js"></script>
   <script src="js/helper.js"></script>
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <!--script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script-->
   <meta name="viewport" content="width=device-width">
 </head>
 <body unresolved>
@@ -24,7 +24,10 @@
     <div id="education" class='gray'>
       <h2>Education</h2>
     </div>
-    <div id="skillsChart">
+    <!--div id="online" class='gray'>
+      <h3>Online Courses</h3>
+    </div-->
+    <div id="skills" class="box">
       <h2>Skills Chart</h2>
     </div>
     <div id="mapDiv">
@@ -56,7 +59,7 @@
     document.getElementById("education").style.backgroundColor = "black";
   }
   if(document.getElementsByClassName("skills-entry").length === 0) {
-    document.getElementById("skillsChart").style.backgroundColor = "black";
+    document.getElementById("skills").style.backgroundColor = "black";
   }
   if(document.getElementsByClassName("flex-item").length === 0) {
     document.getElementById("letsConnect").style.display = "none";
