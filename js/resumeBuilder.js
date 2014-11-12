@@ -8,141 +8,110 @@ var bio = {
         "twitter": "mediazombi",
         "location": "Seattle"
         },
-    "welcomeMessage": "Hi. I'm a veteran in the field of taking complex data sets and making them actionable. Then I translate those actions into new front-end design UI.",
- //   "skills": [
- //       "E-Commerce", "Digital Marketing", "Program Management", "Google Analytics", "Data Visualization", "Email Nurturing"],
+    "welcomeMessage": "Hi. I'm an online veteran in the field of taking complex data sets and making them actionable. Then I translate those actions into new front-end design UI.",
     "skills": [
-        {name: "E-Commerce", value: 0.8},
-        {name: "Digital Marketing", value: 0.6},
-        {name: "Program Management", value: 0.8},
-        {name: "Google Analytics", value: 0.7},
-        {name: "Data Visualization", value: 0.4},
-        {name: "Email Nurturing", value: 0.4}
+        {
+            "Skill": "E-Commerce",
+            "Level": "Advanced",
+            "Frequency": "Hourly"
+        },
+        {
+            "Skill": "Google AdWords",
+            "Level": "Advanced",
+            "Frequency": "Hourly"
+        },
+        {
+            "Skill": "Google Analytics",
+            "Level": "Advanced",
+            "Frequency": "Hourly"
+        },
+        {
+            "Skill": "Search Engine Optimization",
+            "Level": "Advanced",
+            "Frequency": "Weekly"
+        },
+        {
+            "Skill": "Content Strategy",
+            "Level": "Advanced",
+            "Frequency": "Monthly"
+        },
+        {
+            "Skill": "LAMP Technologies",
+            "Level": "Intermediate",
+            "Frequency": "Monthly"
+        },
+
+        {
+            "Skill": "Javascript",
+            "Level": "Beginner",
+            "Frequency": "Monthly"
+        }
         ],
     "pic": "images/bio-pic.jpg"
 };
 
-// BUILD SKILLS CHART
-/*   formatSkills = function() {
- //     $('#skills').append(HTMLskillHeader);
-
-      var skills          = bio.skills,
-      skillSection        = $('.skills:last'),
-      formattedSkillError = '<p>Skill-less at the moment. Check back soon.</p>',
-      formattedSkillItem;
-
-      if (skills && skills.length > 0) {
-        for (var i in skills) {
-          formattedSkillItem = HTMLskillItem.replace('%data%', skills[i][0]).replace('%value%', skills[i][1]).
-                                             replace('%style%', (458 * skills[i][1]).toFixed(1));
-          
-          skillSection.append(formattedSkillItem);
-        }
-        skillSection.append(HTMLskillFooter);
-
-        return formattedSkillItem;
-      } else {
-        skillSection.append(formattedSkillError);
-        $('#skills').hide();
-
-        return formattedSkillError;
-      }
-    }(),
-
-var callback = function(){
-  $('.item-skills').each(function(){
-    newWidth = $(this).parent().width() * $(this).data('percent');
-    $(this).width(0);
-    $(this).animate({
-        width: newWidth,
-    }, 1000);
-  });
-
-$("#skills").ready(callback);
-
-var resize;
-window.onresize = function() {
-  clearTimeout(resize);
-  resize = setTimeout(function(){
-    callback();
-  }, 100);
-};
-$('.thumbnail').on('click', function() {
-  var index = $(this).attr('data-index');
-  $('.item').each(function(i) {
-    $(this).removeClass('active');
-
-    if (i == index) {
-      $(this).addClass('active');
-    }
-  });
-});
-*/
+// BUILD AND DISPLAY SKILLS CHART TABLE
+      
+    // create the table header
+    var thead = d3.select("thead").selectAll("th")
+        .data(d3.keys(bio.skills[0]))
+        .enter().append("th").text(function(d){return d});
+    // fill the table
+    // create rows
+    var tr = d3.select("tbody").selectAll("tr")
+        .data(bio.skills).enter().append("tr")
+ 
+    // cells
+    var td = tr.selectAll("td")
+        .data(function(d){return d3.values(d)})
+        .enter().append("td")
+        .text(function(d) {return d})
 
 // NAME, ROLE, PIC & WELCOME MESSAGE
 
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedPic = HTMLbioPic.replace("%data%", bio.pic);
-var formattedWelcome = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
+    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+    var formattedPic = HTMLbioPic.replace("%data%", bio.pic);
+    var formattedWelcome = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
 
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-$("#header").append(formattedPic);
-$("#header").append(formattedWelcome);
+    $("#header").prepend(formattedRole);
+    $("#header").prepend(formattedName);
+    $("#header").append(formattedPic);
+    $("#header").append(formattedWelcome);
 
 // CONTACT INFO TOP & BOTTOM
-// need to make this a function
-var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-$("#topContacts").append(formattedEmail);
-$("#footerContacts").append(formattedEmail);
+// need to make this a function?
+    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+    $("#topContacts").append(formattedEmail);
+    $("#footerContacts").append(formattedEmail);
 
-var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-$("#topContacts").append(formattedMobile);
-$("#footerContacts").append(formattedMobile);
+    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    $("#topContacts").append(formattedMobile);
+    $("#footerContacts").append(formattedMobile);
 
-var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-$("#topContacts").append(formattedTwitter);
+    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+    $("#topContacts").append(formattedTwitter);
 
-var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-$("#topContacts").append(formattedGithub);
+    var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+    $("#topContacts").append(formattedGithub);
 
-var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-$("#topContacts").prepend(formattedLocation);
+    var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+    $("#topContacts").prepend(formattedLocation);
 
-// NEW SKILLS
-/*
-if (bio.skills.length > 0) {
-  $("#header").append(HTMLskillsStart);
+// SKILLS AT A GLANCE CALLED FROM ARRAY
 
-  for (var i = 0; i < bio.skills.length; ++i) {
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-    $("#skills").append(formattedSkill);
-  }
-}
-*/
-
-/* SKILLS CODE CALLED FROM ARRAY */
-$("#header").append("<h3 id='skillsH3'>Skills at a Glance:</h3>");
+$("#header").append(HTMLskillsStart);
 
 bio.display = function() {
     for (skill in bio.skills) {
-    $("#header").append(HTMLskillsStart);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill].name);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill].Skill);
     $("#skills").append(formattedSkill);
-    /* ORIGINAL SKILLS CODE
-    formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-    $("#skills").append(formattedSkill);
-    formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-    $("#skills").append(formattedSkill);
-    formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-    $("#skills").append(formattedSkill);
-    formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-    $("#skills").append(formattedSkill); */
     }
 }
 
 bio.display();
+
+// EDUCATION DETAILS
 
 var education = {
     "schools": [
@@ -177,6 +146,8 @@ var education = {
     ]
 }
 
+// PROJECT DETAILS
+
 var projects = {
     "projects": [
         {
@@ -199,6 +170,8 @@ var projects = {
         }
     ]
 }
+
+// WORK DETAILS
 
 var work = {
     "jobs": [
@@ -233,7 +206,7 @@ var work = {
     ]
 }
 
-// DISPLAY WORK EXPERIENCE DETAILS
+// DISPLAY WORK DETAILS
 
 work.display = function() {
     for (job in work.jobs) {
@@ -298,7 +271,7 @@ education.display = function() {
         $(".education-entry:last").append(formattedMajor);
     }
 
-// DISPLAY ONLINE COURSE DETAILS (SAME LOOP)
+// DISPLAY ONLINE COURSE DETAILS (WITHIN EDUCATION LOOP)
 
         $("#education").append(HTMLonlineClasses);
         for (course in education.courses) {
@@ -316,31 +289,10 @@ education.display = function() {
 
 education.display();
 
-// DISPLAY ONLINE COURSE DETAILS
-/*
-education.display = function() {
-    for (course in education.courses) {
-//      $("#online").append(HTMLonlineClasses); this replicates the h3 tag for each course. added new div to index.html
-        $("#online").append(HTMLschoolStart);
-        var formattedTitle = HTMLonlineTitle.replace("%data%", education.courses[course].title);
-        $(".education-entry:last").append(formattedTitle);
-        var formattedSchool = HTMLonlineSchool.replace("%data%", education.courses[course].school);
-        $(".education-entry:last").append(formattedSchool);
-        var formattedDates = HTMLonlineDates.replace("%data%", education.courses[course].dates);
-        $(".education-entry:last").append(formattedDates);
-        var formattedURL = HTMLonlineURL.replace("%data%", education.courses[course].url);
-        $(".education-entry:last").append(formattedURL);    
-    }
-}
-
-education.display();
-*/
-
 // DISPLAY GOOGLE MAP OF LOCATIONS
 $("#mapDiv").append(googleMap);
 
 // RETURN WORK LOCATIONS
-
 function locationizer(work_object) {
     var locationArray = [];
     for (job in work_object.jobs) {

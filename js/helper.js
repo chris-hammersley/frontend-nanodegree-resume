@@ -26,15 +26,9 @@ var HTMLlocation = "<li class='flex-item'><span class='orange-text'>location</sp
 var HTMLbioPic = "<img src='%data%' class='biopic'>";
 var HTMLWelcomeMsg = "<span class='welcome-message'>%data%</span>";
 
-// var HTMLskillsStart = "<h3 id='skillsH3'>Skills at a Glance:</h3><ul id='skills' class='flex-box'></ul>";
-var HTMLskillsStart = "<ul id='skills' class='flex-box'></ul>";
+var HTMLskillsStart = "<h3 id='skillsH3'>Skills at a Glance:</h3><ul id='skills' class='flex-box'></ul>";
 var HTMLskills = "<li class='flex-item'><span class='white-text'>%data%</span></li>";
 
-/* ADDED FOR SKILLS CHART
-var HTMLskillHeader = "<div class='skills'></div>",
-var HTMLskillItem = "<div class='item-skills' data-percent='%value%' style='width: %style%px;'>%data%</div>",
-var HTMLskillFooter = "<div class='skills-legend clearfix'><div class='legend-left legend'>Beginner</div><div class='legend-left legend'>Intermediate</div><div class='legend-left legend'>" + "<span>Proficient</span></div><div class='legend-right legend'><span>Expert</span></div><div class='legend-right legend'>Master</div></div>",
-*/
 var HTMLworkStart = "<div class='work-entry'></div>";
 var HTMLworkEmployer = "<a href='#'>%data%";
 var HTMLworkTitle = " - %data%</a>";
