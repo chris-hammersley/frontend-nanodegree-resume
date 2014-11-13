@@ -13,38 +13,38 @@ var bio = {
         {
             "Skill": "E-Commerce",
             "Level": "Advanced",
-            "Frequency": "Hourly"
+            "Frequency of Use": "Hourly"
         },
         {
             "Skill": "Google AdWords",
             "Level": "Advanced",
-            "Frequency": "Hourly"
+            "Frequency of Use": "Hourly"
         },
         {
             "Skill": "Google Analytics",
             "Level": "Advanced",
-            "Frequency": "Hourly"
+            "Frequency of Use": "Hourly"
         },
         {
             "Skill": "Search Engine Optimization",
             "Level": "Advanced",
-            "Frequency": "Weekly"
+            "Frequency of Use": "Weekly"
         },
         {
             "Skill": "Content Strategy",
             "Level": "Advanced",
-            "Frequency": "Monthly"
+            "Frequency of Use": "Monthly"
         },
         {
             "Skill": "LAMP Technologies",
             "Level": "Intermediate",
-            "Frequency": "Monthly"
+            "Frequency of Use": "Monthly"
         },
 
         {
             "Skill": "Javascript",
             "Level": "Beginner",
-            "Frequency": "Monthly"
+            "Frequency of Use": "Monthly"
         }
         ],
     "pic": "images/bio-pic.jpg"
@@ -52,16 +52,14 @@ var bio = {
 
 // BUILD AND DISPLAY SKILLS CHART TABLE
       
-    // create the table header
+    // TABLE HEADER
     var thead = d3.select("thead").selectAll("th")
         .data(d3.keys(bio.skills[0]))
         .enter().append("th").text(function(d){return d});
-    // fill the table
-    // create rows
+    // CREATE ROWS
     var tr = d3.select("tbody").selectAll("tr")
         .data(bio.skills).enter().append("tr")
- 
-    // cells
+    // CREATE CELLS
     var td = tr.selectAll("td")
         .data(function(d){return d3.values(d)})
         .enter().append("td")
@@ -80,7 +78,6 @@ var bio = {
     $("#header").append(formattedWelcome);
 
 // CONTACT INFO TOP & BOTTOM
-// need to make this a function?
     var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
     $("#topContacts").append(formattedEmail);
     $("#footerContacts").append(formattedEmail);
@@ -98,7 +95,7 @@ var bio = {
     var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
     $("#topContacts").prepend(formattedLocation);
 
-// SKILLS AT A GLANCE CALLED FROM ARRAY
+// SKILL SUMMARY CALLED FROM NEW ARRAY
 
 $("#header").append(HTMLskillsStart);
 
@@ -151,20 +148,33 @@ var education = {
 var projects = {
     "projects": [
         {
-            "title": "Words &amp Pictures App",
+            "title": "Words vs. Images App",
             "dates": "October, 2014",
-            "description": "Words &amp Pictures is an anagram app.",
+            "description": "Need to stimulate your brain? Words vs Images is an anagram app that challenges you to create words that fit the image displayed. Once you have figured out the words, test your spatial sense by arranging the words to fit inside the picture!",
             "images": [
-                "images/1.jpg",
+                "images/1.jpg"            ]
+        },
+        {
+            "title": "Find Your aRt Map",
+            "dates": "November, 2014",
+            "description": "Ever wander across a late-night art bazaar and found inspiration? We have, and it's truly remarkable. Don't wait for serendipity to strike! Now you can eat your art whenever you want with the aRt Map! Find pop-up art bazaars across the country.",
+            "images": [
                 "images/2.jpg"
             ]
         },
         {
-            "title": "Project 2",
-            "dates": "November, 2014",
-            "description": "Project 2 is an interactive resume.",
+            "title": "What Job Does the Future Hold?",
+            "dates": "Coming in February, 2015",
+            "description": "Predictive text is so passe. What if you had an app that analyzed your education, your skills, your passions and your job history and then offered you a solid career path over the next 5 years? The Future Proof app does just that!",
             "images": [
-                "images/3.jpg",
+                "images/3.jpg"
+            ]
+        },
+        {
+            "title": "Into the Unknown",
+            "dates": "Coming in April, 2015",
+            "description": "Skunk Works. R&D. Mad Scientist. These are all euphemisms for the unknown. Take hold of your life by charging directly Into the Unknown. What will you find when you start the app? We can't tell you. You'll have to take a leap of faith...",
+            "images": [
                 "images/4.jpg"
             ]
         }
@@ -180,7 +190,7 @@ var work = {
             "title": "Director of E-Commerce &amp Online Marketing",
             "location": "Walnut Creek, CA",
             "dates": "2012 - Current",
-            "description": "Responsible for rapid growth of online sales channel."
+            "description": "Responsible for rapid growth of e-commerce sales for an online training company."
         },
         {
             "employer": "Ion Training",
@@ -202,6 +212,27 @@ var work = {
             "location": "New York, NY",
             "dates": "2003-2006",
             "description": "Managed an online retail research &amp development team tasked with achieving long-term customer retention."
+        },
+        {
+            "employer": "Search for Freedom Documentary Film",
+            "title": "Co-Producer",
+            "location": "New York, NY",
+            "dates": "2002-2003",
+            "description": "Co-Produced, co-wrote and co-edited a 60-minute documentary by filmmaker Munizae Jahangir."
+        },
+        {
+            "employer": "iBeam/Williams Communication",
+            "title": "Manager, Media Training",
+            "location": "New York, NY",
+            "dates": "2000-2002",
+            "description": "Managed rollout of corporate learning management system and all associated multimedia training to 100+ employees worldwide."
+        },
+        {
+            "employer": "APV/Invensys",
+            "title": "PM/Technical Trainer",
+            "location": "Chicago, IL",
+            "dates": "1997-2000",
+            "description": "Delivered multiple projects including an e-commerce site for sales of after-market spare parts and the national rollout of a sales force automation tool."
         }
     ]
 }
@@ -246,7 +277,7 @@ projects.display = function() {
         if (projects.projects[project].images.length > 0) {
             for (image in projects.projects[project].images) {
                 var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[project].images[image]); 
-                $(".project-entry:last").append(formattedImage);
+                $(".project-entry:last").prepend(formattedImage);
                 }
             }
         }

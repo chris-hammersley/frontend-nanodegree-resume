@@ -9,6 +9,14 @@
   padding-right: 5%;
 }
 
+.project-entry {
+  padding-bottom: 40px;
+}
+
+.work-entry {
+  padding-bottom: 9px;
+}
+
 h1 {
 
   font-size: 40px;
@@ -74,14 +82,68 @@ a {
   display: block;
 }
 
+#margin {
+  margin-top: 60px;
+  margin-bottom: 15px;
+  background: #EAE3DE;
+  border-radius: 5px;
+  color: #663333;
+}
+
 .welcome-message {
   font-style: italic;
   font-size: 18px;
   color: #F3F3F3;
-  line-height: 28px;
+  line-height: 26px;
+}
+
+#workExperience {
+  float: left;
+  display: block;
+  width: 47%;
+  height: 100%;
+  background-color: #F3F3F3;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+#projects {
+  float: left;
+  display: block;
+  width: 47%;
+  height: 100%;
+  background: #EAE3DE;
+  border-radius: 5px;
+  margin: 10px;
+  color: #663333;
+}
+
+#education {
+  float: left;
+  display: block;
+  width: 47%;
+  background: #EAE3DE;
+  height: 400px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+#skills-table {
+  float: left;
+  display: block;
+  width: 47%;
+  height: 410px;
+  background-color: #F3F3F3;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 /* SKILLS */
+#skillsH3 {
+  color: #F5A623;
+  display: inline;
+}
+
 .item-skills{
   height: 30px;
   background: #F0563D;
@@ -105,11 +167,7 @@ table {
 th, td {
   border: 1px solid black;
   padding: 5px;
-}
-
-#skills {
-  display: none;
-  padding: 10px;
+  text-align: center;
 }
 
 .box {
@@ -184,9 +242,10 @@ ul {
 }
 
 img {
-  padding: 10px;
-  width: 200px;
+  padding: 5px;
+  width: 150px;
   border-radius: 10%;
+  float: left;
 }
 
 /* Bar chart stuff */
@@ -231,6 +290,18 @@ span {
   .welcome-message {
     display: none;
   }
+  #workExperience,#education,#projects,#skills-table {
+  width: 100%;
+  height: 100%;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  #skillsH3,
+  #skills,
+  .biopic {
+    display: block;
+  }
 }
 
 #map {
@@ -244,12 +315,4 @@ span {
   height: 400px;
   width: 100%;
   padding-bottom: 5%;
-}
-
-@media only screen and (min-width: 750px) {
-  #skillsH3,
-  #skills,
-  .biopic {
-    display: block;
-  }
 }
