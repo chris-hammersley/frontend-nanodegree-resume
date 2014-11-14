@@ -1,6 +1,6 @@
 var bio = {
     "name": "Chris Hammersley",
-    "role": "Director of E-Commerce",
+    "role": "Director of E-Commerce & Online Marketing",
     "contacts" : {
         "mobile": "206-734-4548",
         "email": "chammers@gmail.com",
@@ -150,33 +150,26 @@ var projects = {
         {
             "title": "Words vs. Images App",
             "dates": "October, 2014",
-            "description": "Need to stimulate your brain? Words vs Images is an anagram app that challenges you to create words that fit the image displayed. Once you have figured out the words, test your spatial sense by arranging the words to fit inside the picture!",
-            "images": [
-                "images/1.jpg"            ]
+            "description": "Need to stimulate your brain? Words vs Images is an anagram app that challenges you to create words that fit the image displayed.",
+            "images": "images/1.jpg"
         },
         {
             "title": "Find Your aRt Map",
             "dates": "November, 2014",
-            "description": "Ever wander across a late-night art bazaar and found inspiration? We have, and it's truly remarkable. Don't wait for serendipity to strike! Now you can eat your art whenever you want with the aRt Map! Find pop-up art bazaars across the country.",
-            "images": [
-                "images/2.jpg"
-            ]
+            "description": "Ever wander across a late-night art bazaar and found inspiration? We have, and it's truly remarkable. Now you can eat your art whenever you want with the aRt Map!",
+            "images": "images/2.jpg"
         },
         {
             "title": "What Job Does the Future Hold?",
             "dates": "Coming in February, 2015",
-            "description": "Predictive text is so passe. What if you had an app that analyzed your education, your skills, your passions and your job history and then offered you a solid career path over the next 5 years? The Future Proof app does just that!",
-            "images": [
-                "images/3.jpg"
-            ]
+            "description": "Predictive text is so passe. Analyze your education, skills, passion &amp job history; then see your 5-year career path!",
+            "images": "images/3.jpg"
         },
         {
             "title": "Into the Unknown",
             "dates": "Coming in April, 2015",
-            "description": "Skunk Works. R&D. Mad Scientist. These are all euphemisms for the unknown. Take hold of your life by charging directly Into the Unknown. What will you find when you start the app? We can't tell you. You'll have to take a leap of faith...",
-            "images": [
-                "images/4.jpg"
-            ]
+            "description": "Skunk Works. R&D. Mad Scientist. Euphemisms for the Unknown. What will you find when you start the app? We can't tell you. You'll have to take a leap of faith...",
+            "images": "images/4.jpg"
         }
     ]
 }
@@ -268,18 +261,17 @@ projects.display = function() {
     for (project in projects.projects) {
         $("#projects").append(HTMLprojectStart);
         var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-        $(".project-entry:last").append(formattedTitle);
+        $(".project-entry:last").prepend(formattedTitle);
         var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
         $(".project-entry:last").append(formattedDates);
         var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
         $(".project-entry:last").append(formattedDescription);
-        //images are in an array, so code accordingly
-        if (projects.projects[project].images.length > 0) {
-            for (image in projects.projects[project].images) {
-                var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[project].images[image]); 
-                $(".project-entry:last").prepend(formattedImage);
-                }
-            }
+ //       if (projects.projects[project].images.length > 0) {
+ //           for (image in projects.projects[project].images) {
+        var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[project].images); 
+        $(".project-entry:last").prepend(formattedImage);
+ //               }
+   //         }
         }
     }
 
@@ -319,6 +311,10 @@ education.display = function() {
     }
 
 education.display();
+
+// MATCH COLUMN HEIGHTS
+$("#projects").height($("#workExperience").height());
+$("#skills-table").height($("#education").height());
 
 // DISPLAY GOOGLE MAP OF LOCATIONS
 $("#mapDiv").append(googleMap);
