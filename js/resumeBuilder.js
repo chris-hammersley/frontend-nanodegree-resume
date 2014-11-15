@@ -55,70 +55,6 @@ var bio = {
     "pic": "images/bio-pic.jpg"
 };
 
-// BUILD AND DISPLAY SKILLS TABLE
-      
-    // TABLE HEADER
-    var thead = d3.select("thead").selectAll("th")
-        .data(d3.keys(bio.skills[0]))
-        .enter().append("th").text(function(d){return d});
-    // CREATE ROWS
-    var tr = d3.select("tbody").selectAll("tr")
-        .data(bio.skills).enter().append("tr")
-    // CREATE CELLS
-    var td = tr.selectAll("td")
-        .data(function(d){return d3.values(d)})
-        .enter().append("td")
-        .text(function(d) {return d})
-
-    // CHANGE BACKGROUND COLOR ALTERNATE ROWS USING JQUERY
-    $("tr:even").css("background-color", "#EAE3DE");
-
-
-// NAME, ROLE, PIC & WELCOME MESSAGE
-
-    var formattedName = HTMLheaderName.replace("%data%", bio.name);
-    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-    var formattedPic = HTMLbioPic.replace("%data%", bio.pic);
-    var formattedWelcome = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
-
-    $("#header").prepend(formattedRole);
-    $("#header").prepend(formattedName);
-    $("#header").append(formattedPic);
-    $("#header").append(formattedWelcome);
-
-// CONTACT INFO TOP & BOTTOM
-    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-    $("#topContacts").append(formattedEmail);
-    $("#footerContacts").append(formattedEmail);
-
-    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-    $("#topContacts").append(formattedMobile);
-    $("#footerContacts").append(formattedMobile);
-
-    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-    $("#topContacts").append(formattedTwitter);
-
-    var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-    $("#topContacts").append(formattedGithub);
-
-    var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-    $("#topContacts").prepend(formattedLocation);
-
-// SKILL SUMMARY CALLED FROM NEW ARRAY
-
-$("#header").append(HTMLskillsStart);
-
-bio.display = function() {
-    for (skill in bio.skills) {
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill].Skill);
-    $("#skills").append(formattedSkill);
-    }
-}
-
-bio.display();
-
-// EDUCATION DETAILS
-
 var education = {
     "schools": [
         {
@@ -152,8 +88,6 @@ var education = {
     ]
 }
 
-// PROJECT DETAILS
-
 var projects = {
     "projects": [
         {
@@ -182,8 +116,6 @@ var projects = {
         }
     ]
 }
-
-// WORK DETAILS
 
 var work = {
     "jobs": [
@@ -238,6 +170,51 @@ var work = {
         }
     ]
 }
+
+// NAME, ROLE, PIC & WELCOME MESSAGE
+
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
+    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+    var formattedPic = HTMLbioPic.replace("%data%", bio.pic);
+    var formattedWelcome = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
+
+    $("#header").prepend(formattedRole);
+    $("#header").prepend(formattedName);
+    $("#header").append(formattedPic);
+    $("#header").append(formattedWelcome);
+
+// CONTACT INFO TOP & BOTTOM
+
+    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+    $("#topContacts").append(formattedEmail);
+    $("#footerContacts").append(formattedEmail);
+
+    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    $("#topContacts").append(formattedMobile);
+    $("#footerContacts").append(formattedMobile);
+
+    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+    $("#topContacts").append(formattedTwitter);
+
+    var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+    $("#topContacts").append(formattedGithub);
+
+    var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+    $("#topContacts").prepend(formattedLocation);
+
+// SKILL SUMMARY CALLED FROM NEW ARRAY
+
+$("#header").append(HTMLskillsStart);
+
+bio.display = function() {
+    for (skill in bio.skills) {
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill].Skill);
+    $("#skills").append(formattedSkill);
+    }
+}
+
+bio.display();
+
 
 // DISPLAY WORK DETAILS
 
@@ -321,14 +298,35 @@ education.display = function() {
 
 education.display();
 
-// MATCH COLUMN HEIGHTS
- $("#projects").height($("#workExperience").height());
- $("#skills-table").height($("#education").height());
+// BUILD AND DISPLAY SKILLS TABLE
+      
+    // TABLE HEADER
+    var thead = d3.select("thead").selectAll("th")
+        .data(d3.keys(bio.skills[0]))
+        .enter().append("th").text(function(d){return d});
+    // CREATE ROWS
+    var tr = d3.select("tbody").selectAll("tr")
+        .data(bio.skills).enter().append("tr")
+    // CREATE CELLS
+    var td = tr.selectAll("td")
+        .data(function(d){return d3.values(d)})
+        .enter().append("td")
+        .text(function(d) {return d})
+
+    // CHANGE BACKGROUND COLOR ALTERNATE ROWS USING JQUERY
+    $("tr:even").css("background-color", "#EAE3DE");
+
+// MATCH DIV HEIGHTS
+
+    $("#projects").height($("#workExperience").height());
+    $("#skills-table").height($("#education").height());
 
 // DISPLAY GOOGLE MAP OF LOCATIONS
+
 $("#mapDiv").append(googleMap);
 
 // RETURN WORK LOCATIONS
+
 function locationizer(work_object) {
     var locationArray = [];
     for (job in work_object.jobs) {
@@ -339,9 +337,11 @@ function locationizer(work_object) {
 }
 
 // Did locationizer() work? This line will tell you!
+
 console.log(locationizer(work));
 
 // INTERNATIONAL NAME BUTTON
+
 function inName() {
     splitName = bio.name.trim().split(" ");
     console.log(name);
