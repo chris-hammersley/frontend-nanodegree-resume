@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/style.css" rel="stylesheet"></link>
   <title>Chris Hammersley - At a Glance</title>
   <script src="js/jQuery.js"></script>
@@ -25,10 +28,10 @@
     <div id="education" class="gray">
       <h2>Education</h2>
     </div>
-    <div id="skills-table" class="chart">
+    <div id="skills-chart">
       <h2>Skills Chart</h2>
-      <table id="skills">
-      <thead class="item-skills"></thead>
+      <table cellspacing="0">
+      <thead></thead>
       <tbody></tbody>
     </table>
     </div>
@@ -60,9 +63,9 @@
   if(document.getElementsByClassName("education-entry").length === 0) {
     document.getElementById("education").style.display = "none";
   }
- /* if(document.getElementsByClassName("skills").length === 0) {
+  if(document.getElementsByClassName("flex-item").length === 0) {
     document.getElementById("skills").style.display = "none";
-  } */
+  }
   if(document.getElementsByClassName("flex-item").length === 0) {
     document.getElementById("letsConnect").style.display = "none";
   }

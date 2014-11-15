@@ -13,44 +13,49 @@ var bio = {
         {
             "Skill": "E-Commerce",
             "Level": "Advanced",
-            "Frequency of Use": "Hourly"
+            "How Often": "Daily"
         },
         {
             "Skill": "Google AdWords",
             "Level": "Advanced",
-            "Frequency of Use": "Hourly"
+            "How Often": "Daily"
         },
         {
             "Skill": "Google Analytics",
             "Level": "Advanced",
-            "Frequency of Use": "Hourly"
+            "How Often": "Daily"
         },
         {
             "Skill": "Search Engine Optimization",
             "Level": "Advanced",
-            "Frequency of Use": "Weekly"
+            "How Often": "Monthly"
         },
         {
             "Skill": "Content Strategy",
             "Level": "Advanced",
-            "Frequency of Use": "Monthly"
+            "How Often": "Monthly"
         },
         {
             "Skill": "LAMP Technologies",
             "Level": "Intermediate",
-            "Frequency of Use": "Monthly"
+            "How Often": "Monthly"
         },
 
         {
             "Skill": "Javascript",
             "Level": "Beginner",
-            "Frequency of Use": "Monthly"
+            "How Often": "Weekly"
+        },
+        {
+            "Skill": "HTML/CSS",
+            "Level": "Intermediate",
+            "How Often": "Weekly"
         }
         ],
     "pic": "images/bio-pic.jpg"
 };
 
-// BUILD AND DISPLAY SKILLS CHART TABLE
+// BUILD AND DISPLAY SKILLS TABLE
       
     // TABLE HEADER
     var thead = d3.select("thead").selectAll("th")
@@ -64,6 +69,10 @@ var bio = {
         .data(function(d){return d3.values(d)})
         .enter().append("td")
         .text(function(d) {return d})
+
+    // CHANGE BACKGROUND COLOR ALTERNATE ROWS USING JQUERY
+    $("tr:even").css("background-color", "#EAE3DE");
+
 
 // NAME, ROLE, PIC & WELCOME MESSAGE
 
@@ -313,8 +322,8 @@ education.display = function() {
 education.display();
 
 // MATCH COLUMN HEIGHTS
-$("#projects").height($("#workExperience").height());
-$("#skills-table").height($("#education").height());
+ $("#projects").height($("#workExperience").height());
+ $("#skills-table").height($("#education").height());
 
 // DISPLAY GOOGLE MAP OF LOCATIONS
 $("#mapDiv").append(googleMap);

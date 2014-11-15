@@ -84,6 +84,8 @@ a {
   margin-bottom: 15px;
   background: #EAE3DE;
   border-radius: 5px;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
   color: #663333;
 }
 
@@ -97,38 +99,44 @@ a {
 #workExperience {
   float: left;
   display: block;
-  width: 47%;
+  width: 46%;
   background-color: #CFD8E5;
   margin-left: 30px;
+  margin-right: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 
 #projects {
-  float: right;
+  float: left;
   display: block;
-  color: #663333;
-  width: 47%;
-  border-radius: 5px;
+  width: 46%;
   margin-right: 30px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 
 #education {
   float: left;
   display: block;
-  width: 47%;
-  background: #EAE3DE;
-  border-radius: 5px;
+  width: 46%;
+  background-color: #EAE3DE;
   margin-left: 30px;
   padding-bottom: 10px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
 }
 
-#skills-table {
-  float: right;
+#skills-chart {
+  float: left;
   display: block;
-  width: 47%;
-  border-radius: 5px;
-  margin-right: 30px;
+  width: 46%;
+  margin-left: 10px;
 }
 
 /* SKILLS */
@@ -137,30 +145,36 @@ a {
   display: inline;
 }
 
-.item-skills{
-  height: 30px;
-  background: #C1FFCC;
-  color: #665644;
-  padding: 5px 10px;
-  margin-bottom: 5px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 1.3em;
-  font-weight: 600;
-}
-
-/* TABLE CHART */
 table {
-  border-collapse: collapse;
-  margin-left: 5%;
-  padding-right: 5%;   
+  background-color:#CFD8E5;
+  margin-right:30px;
+  margin-left: 30px;
+  width: 100%;
+  border:#EAE3DE 1px solid;
+  border-radius:10px;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
 }
 
-th, td {
-  border: 1px solid #E5B6B1;
-  padding: 5px;
-  text-align: center;
+table th {
+  padding: 6px 10px;
+  text-align: left;
+}
+
+table td {
+  padding:10px 10px 10px 10px;
+}
+
+table tr:last-child td:first-child {
+  border-bottom-left-radius:10px;
+  -moz-border-radius-bottomleft:10px;
+  -webkit-border-bottom-left-radius:10px;
+}
+  
+table tr:last-child td:last-child {
+  border-bottom-right-radius:10px;
+  -moz-border-radius-bottomright:10px;
+  -webkit-border-bottom-right-radius:10px;
 }
 
 .box {
@@ -215,7 +229,9 @@ th, td {
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 15px;
-  border-radius: 15px;
+  border-radius: 10px;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
 }
 
 .flex-box {
@@ -241,6 +257,8 @@ ul {
   width: 250px;
   display: none;
   border-radius: 10%;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
 }
 
 img {
@@ -249,22 +267,12 @@ img {
   margin-bottom: 40px;
   width: 125px;
   border-radius: 10%;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
 }
 
 .clear-float {
   clear: both;
-}
-
-/* Bar chart stuff */
-.chart div {
-  font: 10px sans-serif;
-  background-color: #4A4A4A;
-  text-align: right;
-  padding-left: 3px;
-  margin: 1px;
-  height: 12px;
-  color: white;
-  display: block;
 }
 
 span {
@@ -278,13 +286,12 @@ span {
 #map {
   display: block;
   height: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 #mapDiv {
   height: 400px;
-  width: 80%;
   padding-bottom: 5%;
 }
 
@@ -310,12 +317,19 @@ span {
   .welcome-message {
     display: none;
   }
-  #workExperience,#education,#projects,#skills-table {
-  width: 97%;
+  #workExperience,#education,#projects,#skills-chart table {
+  width: 95%;
   height: 100%;
   float: center;
   margin-left: 10px;
     }
+  #skills-chart table {
+    width: 100%;
+    margin-left: 0px;
+  }
+  #map {
+    height: 90%;
+  }
 }
 
 @media only screen and (min-width: 750px) {
